@@ -20,7 +20,7 @@ const List = ({userList}) => {
   );
 };
 
-export default List;
+export default React.memo(List);
 
 const styles = StyleSheet.create({
   container: {

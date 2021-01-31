@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
 import SearchInput from './components/SearchInput';
 
@@ -9,6 +9,9 @@ const App = () => {
   function increase() {
     setCounter(counter + 1);
   }
+  const handleText = (val) => {
+    console.log(val);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -17,7 +20,11 @@ const App = () => {
         <Text style={styles.counterText}>{counter}</Text>
         <Button title="Increase Counter" onPress={increase} />
       </View>
-      <SearchInput title="Search" placeholder="Enter a Text..." />
+      <SearchInput
+        title="Search"
+        placeholder="Enter a Text..."
+        handleText={handleText}
+      />
     </SafeAreaView>
   );
 };

@@ -1,11 +1,15 @@
 import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 
-const SearchInput = ({placeholder}) => {
+const SearchInput = ({placeholder, handleText}) => {
   console.log('rendering SearchInput');
   return (
     <View style={styles.container}>
-      <TextInput style={styles.textInput} placeholder={placeholder} />
+      <TextInput
+        style={styles.textInput}
+        placeholder={placeholder}
+        onChangeText={handleText}
+      />
     </View>
   );
 };

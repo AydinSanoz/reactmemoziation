@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
 import SearchInput from './components/SearchInput';
 
 const App = () => {
   console.log(' Redering App');
   const [counter, setCounter] = useState(0);
+  const [text, setText] = useState('');
 
   function increase() {
     setCounter(counter + 1);
   }
-  const handleText = (val) => {
-    console.log(val);
-  };
+  const handleText = useCallback((val) => {
+    setText(val);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>

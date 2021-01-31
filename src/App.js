@@ -1,11 +1,21 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
 import SearchInput from './components/SearchInput';
+import axios from 'axios';
+import List from './components/List';
 
 const App = () => {
   console.log(' Redering App');
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState('');
+  const [search, setSearch] = useState('');
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users').then(({data}) => {
+      setUserList(data);
+    });
+  }, []);
 
   function increase() {
     setCounter(counter + 1);
@@ -13,6 +23,9 @@ const App = () => {
   const handleText = useCallback((val) => {
     setText(val);
   }, []);
+  const handleSearch = () => {
+    setSearch(text);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,6 +39,8 @@ const App = () => {
         placeholder="Enter a Text..."
         handleText={handleText}
       />
+      <Button title="Search" onPress={handleSearch} />
+      <List userList={userList} />
     </SafeAreaView>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState, useEffect, useMemo} from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
 import SearchInput from './components/SearchInput';
 import axios from 'axios';
@@ -26,9 +26,13 @@ const App = () => {
   const handleSearch = () => {
     setSearch(text);
   };
-  const filteredList = userList.filter((user) => {
-    return user.name.toLowerCase().includes(search.toLowerCase());
-  });
+  const filteredList = useMemo(
+    () =>
+      userList.filter((user) => {
+        return user.name.toLowerCase().includes(search.toLowerCase());
+      }),
+    [search, userList],
+  );
 
   return (
     <SafeAreaView style={styles.container}>

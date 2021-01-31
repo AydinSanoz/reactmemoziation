@@ -10,7 +10,7 @@ const SearchInput = ({placeholder}) => {
   );
 };
 
-export default SearchInput;
+export default React.memo(SearchInput);
 
 const styles = StyleSheet.create({
   container: {

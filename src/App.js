@@ -26,6 +26,9 @@ const App = () => {
   const handleSearch = () => {
     setSearch(text);
   };
+  const filteredList = userList.filter((user) => {
+    return user.name.toLowerCase().includes(search.toLowerCase());
+  });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,7 +43,7 @@ const App = () => {
         handleText={handleText}
       />
       <Button title="Search" onPress={handleSearch} />
-      <List userList={userList} />
+      <List userList={filteredList} />
     </SafeAreaView>
   );
 };

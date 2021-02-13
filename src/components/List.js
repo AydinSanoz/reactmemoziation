@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
+import Seperator from './Seperator';
+import Comp from './Comp';
 
 const List = ({userList}) => {
   console.log('rendering List');
@@ -15,6 +17,9 @@ const List = ({userList}) => {
         keyExtractor={(_, index) => index.toString()}
         data={userList}
         renderItem={renderUser}
+        ItemSeparatorComponent={Seperator}
+        ListFooterComponent={Comp}
+        ListHeaderComponent={Comp}
       />
     </View>
   );
@@ -30,6 +35,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
+    backgroundColor: '#00000005',
   },
 });
 
